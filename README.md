@@ -1,2 +1,2 @@
 # Chatter.Server
-Java project
+The Java chat app's server side.
