@@ -1,0 +1,2 @@
+# Chatter.Server
+Java project
