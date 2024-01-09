@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 import org.json.JSONObject;
 
-public class OptionReader
+public class OptionReader implements IOptionReader
 {
     //TODO : binding method
     private String _appSettingsPath;
@@ -16,17 +16,21 @@ public class OptionReader
     public OptionReader()
     {
         findAppSettings(new File(System.getProperty("user.dir")));
+        createInstance();
     }
 
     //Getters
-    public static OptionReader getInstance()
+    public OptionReader getInstance()
+    {
+        return _singletonInstance;
+    }
+
+    public void createInstance()
     {
         if (_singletonInstance == null)
         {
             _singletonInstance = new OptionReader();
         }
-
-        return _singletonInstance;
     }
 
     public String getAppSettingsPath()
@@ -65,7 +69,7 @@ public class OptionReader
             {
                 findAppSettings(file);
             }
-            else if(file.getName().contains("appSettings.json"))
+            else if(file.getName().contains("appsettings.json"))
             {
                 this._appSettingsPath = file.getAbsolutePath();
                 break;

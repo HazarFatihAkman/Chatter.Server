@@ -1,13 +1,21 @@
 import Options.DbOptions;
-import Options.OptionReader;
+import Options.IDbOptions;
 
 public class App {
     public static void main(String[] args) throws Exception
     {
-        var optionReader = OptionReader.getInstance();
-        
-        var dbOptions = new DbOptions();
+        try
+        {
+            IDbOptions dbOptions = new DbOptions();
 
-        optionReader.readKey(dbOptions.Prefix, "SqlLite");
+            System.out.println(dbOptions.hashCode());
+
+            var test = new Test();
+            System.out.println(test.getTest());
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
     }
 }
